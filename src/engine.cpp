@@ -1,5 +1,7 @@
 #include "CodeFramework/engine.hpp"
 
+namespace CodeFramework {
+
 Engine::Engine(const std::string& title, int width, int height)
     : gameName(title), screenWidth(width), screenHeight(height) {
 
@@ -67,3 +69,5 @@ void Engine::clean() {
 bool Engine::isRunning() const {
     return gameRunning;
 }
+
+} // namespace CodeFramework
