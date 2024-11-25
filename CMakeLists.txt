@@ -33,12 +33,13 @@ target_include_directories(CodeFramework
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> # Durante a construção
         $<INSTALL_INTERFACE:include>                          # Após instalação
-    PRIVATE
-        ${SDL2_SOURCE_DIR}/include                            # SDL2 headers
 )
 
 # Vincular a dependência SDL2
-target_link_libraries(CodeFramework PUBLIC SDL2-static)
+target_link_libraries(CodeFramework PUBLIC SDL2::SDL2-static)
+
+# Criar um alias para facilitar importação
+add_library(CodeFramework::CodeFramework ALIAS CodeFramework)
 
 # Configurar instalação da biblioteca
 install(
@@ -55,17 +56,26 @@ install(
     DESTINATION include/CodeFramework
 )
 
+# Instalar SDL2
+install(
+    TARGETS SDL2-static
+    EXPORT SDL2Targets
+    ARCHIVE DESTINATION lib
+    LIBRARY DESTINATION lib
+    RUNTIME DESTINATION bin
+)
+
+install(
+    EXPORT SDL2Targets
+    FILE SDL2Targets.cmake
+    NAMESPACE SDL2::
+    DESTINATION lib/cmake/SDL2
+)
+
 # Exportar os targets para uso em outros projetos
 install(
     EXPORT CodeFrameworkTargets
     FILE CodeFrameworkTargets.cmake
     NAMESPACE CodeFramework::
     DESTINATION lib/cmake/CodeFramework
-)
-
-# Gerar os arquivos de exportação para uso em projetos locais
-export(
-    EXPORT CodeFrameworkTargets
-    FILE ${CMAKE_CURRENT_BINARY_DIR}/CodeFrameworkTargets.cmake
-    NAMESPACE CodeFramework::
 )
