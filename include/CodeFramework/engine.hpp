@@ -5,24 +5,28 @@
 #include <iostream>
 #include <string>
 
-class Engine {
-private:
-    std::string gameName;
-    int screenWidth;
-    int screenHeight;
-    SDL_Renderer* gameRenderer = nullptr;
-    SDL_Window* gameWindow = nullptr;    
-    bool gameRunning = false;            
+namespace CodeFramework
+{
 
-public:
-    Engine(const std::string& title, int width, int height);
-    ~Engine();
+    class Engine
+    {
+    private:
+        std::string gameName;
+        int screenWidth;
+        int screenHeight;
+        SDL_Renderer *gameRenderer = nullptr;
+        SDL_Window *gameWindow = nullptr;
+        bool gameRunning = false;
 
-    void initialize();
-    void renderer();
-    void handleEvents();
-    void clean();
-    bool isRunning() const; // `const` para indicar que não modifica o estado do objeto
-};
+    public:
+        Engine(const std::string &title, int width, int height);
+        ~Engine();
 
+        void initialize();
+        void renderer();
+        void handleEvents();
+        void clean();
+        bool isRunning() const; // `const` para indicar que não modifica o estado do objeto
+    };
+}
 #endif
