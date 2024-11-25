@@ -29,7 +29,7 @@ add_library(${PROJECT_NAME} STATIC ${SOURCES})
 target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIR})
 
 # Linkar a biblioteca SDL2
-target_link_libraries(${PROJECT_NAME} PUBLIC SDL2::SDL2 SDL2::SDL2main)
+target_link_libraries(${PROJECT_NAME} PUBLIC SDL2::SDL2-static)
 
 # Instalação (opcional)
 install(TARGETS ${PROJECT_NAME}
