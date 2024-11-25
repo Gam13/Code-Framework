@@ -1,0 +1,21 @@
+# Ignorar a pasta de build
+/build/
+/vs/
+/out/
+
+# Ignorar a pasta do VS Code
+/.vscode/
+
+# Ignorar arquivos de configuração do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos gerados por IDEs
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignorar arquivos de compilação temporários
+*.log
+
