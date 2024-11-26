@@ -4,7 +4,7 @@
 #include "SDL.h"
 #include <iostream>
 #include <string>
-
+#include "game.hpp"
 namespace CodeFramework
 {
 
@@ -16,17 +16,20 @@ namespace CodeFramework
         int screenHeight;
         SDL_Renderer *gameRenderer = nullptr;
         SDL_Window *gameWindow = nullptr;
-        bool gameRunning = false;
 
-    public:
-        Engine(const std::string &title, int width, int height);
-        ~Engine();
+        Game* game_;
+        bool gameRunning = false;
 
         void initialize();
         void renderer();
         void handleEvents();
         void clean();
-        bool isRunning() const; // `const` para indicar que não modifica o estado do objeto
+    public:
+        Engine(Game* game_,const std::string &title, int width, int height);
+        ~Engine();
+
+        void run();
+        
     };
 }
 #endif
