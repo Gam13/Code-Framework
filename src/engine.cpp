@@ -3,8 +3,8 @@
 namespace CodeFramework {
 
 //Construtor da engine
-Engine::Engine(Game* game,const std::string& title, int width, int height)
-    :game_(game), gameName(title), screenWidth(width), screenHeight(height) {
+Engine::Engine(const std::string& title, int width, int height)
+    : gameName(title), screenWidth(width), screenHeight(height) {
 
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "O SDL não pôde ser iniciado: " << SDL_GetError() << std::endl;
@@ -50,10 +50,11 @@ void Engine::handleEvents() {
             gameRunning = false;
         }
     }
+    
 }
 
 void Engine::renderer() {
-    SDL_SetRenderDrawColor(gameRenderer, 100, 42, 100, 125);
+    SDL_SetRenderDrawColor(gameRenderer, 100, 42, 100, 255);
     SDL_RenderClear(gameRenderer);
     SDL_RenderPresent(gameRenderer);
 }

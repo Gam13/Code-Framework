@@ -4,7 +4,7 @@
 #include "SDL.h"
 #include <iostream>
 #include <string>
-#include "game.hpp"
+
 namespace CodeFramework
 {
 
@@ -17,7 +17,6 @@ namespace CodeFramework
         SDL_Renderer *gameRenderer = nullptr;
         SDL_Window *gameWindow = nullptr;
 
-        Game* game_;
         bool gameRunning = false;
 
         void initialize();
@@ -25,7 +24,7 @@ namespace CodeFramework
         void handleEvents();
         void clean();
     public:
-        Engine(Game* game_,const std::string &title, int width, int height);
+        Engine(const std::string &title, int width, int height);
         ~Engine();
 
         void run();
